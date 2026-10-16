@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hotel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="#" class="logo-wrap" onclick="showPage('home'); return false;">
+      <div class="suitcase"></div>
+      <div class="logo">hotel</div>
+    </a>
+
+    <nav class="nav">
+      <a href="#" onclick="showPage('address'); return false;">адрес</a>
+      <a href="#" onclick="showPage('booking'); return false;">забронировать</a>
+      <a href="#" onclick="showPage('about'); return false;">подробнее о сайте</a>
+    </nav>
+  </header>
+
+
+  <!-- HOME -->
+  <main id="home" class="page active">
+
+    <div class="hero-image"></div>
+
+    <section class="hero-content">
+      <div class="eyebrow">Private stay · Since 2026</div>
+
+      <h1>Ваша остановка — здесь.</h1>
+
+      <div class="hotel-name">hotel.</div>
+
+      <p class="hero-description">
+        Пространство для тех, кто ценит тишину, архитектуру
+        и детали. Остановитесь там, где каждая ночь становится
+        частью путешествия.
+      </p>
+
+      <button class="main-button" onclick="showPage('booking')">
+        забронировать
+      </button>
+    </section>
+
+    <div class="hero-scroll">Scroll to discover</div>
+  </main>
+
+
+  <!-- BOOKING -->
+  <main id="booking" class="page">
+
+    <section class="inner">
+
+      <h1 class="page-title">Бронирование</h1>
+
+      <p class="page-subtitle">
+        Выберите даты пребывания, количество гостей и номер.
+        После выбора мы покажем детали вашего проживания.
+      </p>
+
+      <div class="booking-layout">
+
+        <div class="booking-card">
+
+          <h2>Детали поездки</h2>
+
+          <div class="field">
+            <label for="checkin">Дата заезда</label>
+            <input type="date" id="checkin">
+          </div>
+
+          <div class="field">
+            <label for="checkout">Дата выезда</label>
+            <input type="date" id="checkout">
+          </div>
+
+          <div class="field">
+            <label for="guests">Гости</label>
+            <select id="guests">
+              <option value="1">1 гость</option>
+              <option value="2" selected>2 гостя</option>
+              <option value="3">3 гостя</option>
+              <option value="4">4 гостя</option>
+              <option value="5">5 гостей</option>
+              <option value="6">6 гостей</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="room">Тип номера</label>
+            <select id="room">
+              <option value="ordinary">Обычный</option>
+              <option value="deluxe">Делюкс</option>
+              <option value="president">Для президента</option>
+            </select>
+          </div>
+
+          <button class="confirm-selection" onclick="calculateBooking()">
+            подтвердить выбор
+          </button>
+
+        </div>
+
+
+        <div class="summary-card">
+
+          <h2>Ваш выбор</h2>
+
+          <div class="summary-empty" id="summaryEmpty">
+            Заполните поля слева и нажмите
+            «подтвердить выбор», чтобы увидеть
+            информацию о бронировании.
+          </div>
+
+          <div class="summary-content" id="summaryContent">
+
+            <div class="summary-room" id="summaryRoom">
+              Делюкс
+            </div>
+
+            <div class="summary-row">
+              <span>Заезд</span>
+              <strong id="summaryCheckin">—</strong>
+            </div>
+
+            <div class="summary-row">
+              <span>Выезд</span>
+              <strong id="summaryCheckout">—</strong>
+            </div>
+
+            <div class="summary-row">
+              <span>Гости</span>
+              <strong id="summaryGuests">—</strong>
+            </div>
+
+            <div class="summary-row">
+              <span>Количество ночей</span>
+              <strong id="summaryNights">—</strong>
+            </div>
+
+            <div class="total">
+              <span>Итого</span>
+              <strong id="summaryPrice">0 ₽</strong>
+            </div>
+
+            <button class="final-confirm" onclick="completeBooking()">
+              подтвердить бронирование
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+
+  <!-- ADDRESS -->
+  <main id="address" class="page">
+
+    <section class="inner">
+
+      <h1 class="page-title">Адрес</h1>
+
+      <p class="page-subtitle">
+        Место, созданное для спокойного пребывания вдали
+        от привычного ритма города.
+      </p>
+
+      <div class="address-layout">
+
+        <div class="address-text">
+
+          <div class="address-label">Наш адрес</div>
+
+          <div class="address-value">
+            проспект<br>
+            Серебряный, 17
+          </div>
+
+          <p class="address-description">
+            · Санкт-Петербург<br>
+            Россия<br><br>
+            Несуществующий адрес для демонстрации сайта.
+            Точные координаты можно заменить на реальные
+            данные вашего отеля.
+          </p>
+
+        </div>
+
+        <div class="address-image"></div>
+
+      </div>
+
+    </section>
+  </main>
+
+
+  <!-- ABOUT -->
+  <main id="about" class="page">
+
+    <section class="inner">
+
+      <h1 class="page-title">О сайте</h1>
+
+      <p class="page-subtitle">
+        Минималистичный интерфейс, созданный вокруг идеи
+        современного отеля.
+      </p>
+
+      <div class="about-box">
+
+        <div class="about-small">Credits</div>
+
+        <h2>
+          сайт сделал<br>
+          marlborou3gh
+        </h2>
+
+        <p>
+          telegram
+        </p>
+
+      </div>
+
+    </section>
+  </main>
+
+
+  <!-- SUCCESS MODAL -->
+  <div class="modal" id="successModal">
+
+    <div class="modal-box">
+
+      <div class="success-mark">✓</div>
+
+      <h2>
+        ваш номер успешно забронирован!
+      </h2>
+
+      <p>
+        Удачной поездки.
+      </p>
+
+      <button class="modal-close" onclick="closeModal()">
+        закрыть
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
